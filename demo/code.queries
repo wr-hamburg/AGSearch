@@ -1,0 +1,66 @@
+pragma omp parallel
+pragma omp for
+pragma omp sections
+pragma omp single
+pragma omp parallel for
+pragma omp parallel sections
+pragma omp task
+pragma omp taskyield
+pragma omp master
+pragma omp critical
+pragma omp barrier
+pragma omp taskwait
+pragma omp atomic
+pragma omp flush
+pragma omp ordered
+pragma omp threadprivate
+pragma omp declare reduction
+pragma omp scan
+pragma omp declare mapper
+pragma omp allocate
+pragma omp \(begin \)\?metadirective
+pragma omp declare variant
+pragma omp dispatch
+pragma omp declare simd
+pragma omp \(begin \)\?declare target
+pragma omp requires
+pragma omp \(begin \)\?assume
+pragma omp nothing
+pragma omp error
+pragma omp tile
+pragma omp unroll
+pragma omp teams
+pragma omp simd
+pragma omp masked
+pragma omp scope
+pragma omp distribute
+pragma omp loop
+pragma omp target
+pragma omp interop
+pragma omp taskgroup
+pragma omp depobj
+pragma omp cancel
+pragma omp for simd
+pragma omp taskloop simd
+pragma omp parallel loop
+pragma omp parallel for simd
+pragma omp parallel masked
+pragma omp masked taskloop
+pragma omp masked taskloop simd
+pragma omp parallel masked taskloop
+pragma omp parallel masked taskloop simd
+pragma omp teams distribute
+pragma omp distribute simd
+pragma omp distribute parallel for
+pragma omp distribute parallel for simd
+pragma omp teams loop
+pragma omp target parallel
+pragma omp target parallel for
+pragma omp target parallel for simd
+pragma omp target parallel simd
+pragma omp target parallel loop
+pragma omp target simd
+pragma omp target teams distribute simd
+pragma omp target teams loop
+pragma omp target teams distribute parallel for
+pragma omp target teams distribute parallel for simd

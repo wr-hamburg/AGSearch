@@ -1,0 +1,63 @@
+#################
+# Prerequisites #
+#################
+AGSearch requires a Python package called pygithub and the container engine podman.
+Pygithub can be installed via:
+
+python3 -m pip install pygithub
+
+Podman can either be installed with the package manager of your choice or directly from
+their website:
+
+https://podman.io/
+ 
+The tool was tested with Python 3.9.7, so no guarantees for any version below that.
+ 
+#########
+# Usage #
+#########
+The tool requires two arguments: the path to the file containing the search query information (via --searchqueries)
+and the path to the file containing the queries that you want to look for in the repositories (via --codequeries).
+There are two optional arguments, the first one being the name for the database collection. The tool uses podman
+to set up a container for a MongoDB on port 27017, data will be stored in the 'data' directory in the directory
+where the binary resides. If no database collection name is specified, the data will be stored in the default
+collection.
+The second optional argument allows for the specification of the Github API to use for the search. The default
+is REST, but the user can opt for the GraphQL search as well.
+
+In order to raise the rate limit imposed by Github, this tool requires a Github token to be stored in an
+environment variable called 'GITHUB_KEY'.
+
+########################
+# Required file format #
+########################
+The search query file needs the following format:
+
+key1: value1, value2
+key2: value3, value4
+key3: ...
+
+The accepted keys are specified in searchModule/configValidity. Currently the tool accepts keyword, language, stars, topic and pushed.
+If you want to specify multiple values per key, separate them with commas.
+For keyword, provide any keywords that you want to look for, i.e. keyword: hdf5. The same applies for topic.
+For language, provide the programming language to look for, i.e. language: c++.
+For stars and pushed, provide either a range (value1..value2) or use '<' or '>' to further narrow down the search.
+Stars requires an integer, pushed requires a date in the 'YYYY-MM-DD' format, i.e. pushed: 2022-01-01.
+Regarding the keywords, if you want to look for the union of two keywords, for example you want to find all repositories
+that use either HDF5 or NetCDF, or both, separate the keywords with OR instead of a comma (netcdf OR hdf5). If you
+separate the keywords with a comma, Github will only return repositories that use both NetCDF and HDF5.
+Regarding the keywords, if you use OpenMP as the keyword for example, Github will not return ALL repositories on
+Github that utilize OpenMP, but rather those that specify it in their name, readme or topics. (TODO check this actually).
+
+
+The code query file needs the following format:
+
+query1
+query2
+query3
+...
+
+The queries will be passed to grep (-RnwIi) and enclosed with ".*".
+Since the queries are internally treated as regular expressions, you can construct your queries accordingly, as long as
+it adheres to the grep regex syntax.
+Examples can be found in the demo directory.

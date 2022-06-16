@@ -1,0 +1,72 @@
+###
+# File: science-topic-association.yaml
+# Created: Tuesday, 10th May 2022 6:09:28 pm
+# Author: Jannek Squar (jannek.squar@uni-hamburg.de)
+# -----
+# Based on Survey: Verwendung von OpenMP in Open Source Applikationen
+# -----
+# Last Modified: Tuesday, 10th May 2022 6:10:01 pm
+# Modified By: Jannek Squar (jannek.squar@uni-hamburg.de)
+# -----
+# Copyright (c) 2022 Jannek Squar
+# 
+###
+Topics:
+  - Astronomy:
+    - astronomy
+    - radio-astronomy
+    - astrophysics
+    - astro
+    - space
+    - astrology
+    - cosmology
+  - Biology:
+    - biology
+    - computational-biology
+    - bioinformatics
+    - systems-biology
+    - Synthetic biology
+    - structural-biology
+    - biophysics
+    - genetics
+    - ecology
+    - microbiology
+  - Chemistry:
+    - chemistry
+    - quantum-chemistry
+    - computational-chemistry
+  - Geography:
+    - geography
+    - Geographic Information System
+    - geographical-information-system
+    - geology
+    - geoscience
+    - geophysics
+    - hydrology
+    - meteorology
+  - Mathematics:
+    - mathematics
+    - discrete-mathematics
+    - applied-mathematics
+    - mathematical-modelling
+    - mathematical-programming
+    - mathematical-expressions
+    - math
+    - maths
+    - math-library
+    - geometry
+    - stochastic
+    - stochastic-processes
+    - linear-algebra
+    - algebra
+    - topology
+  - Physics:
+    - physics
+    - physics-simulation
+    - physics-engine
+    - computational-physics
+    - particle-physics
+    - physics-2d
+    - high-energy-physics
+    - bullet-physics
+    - nuclear-physics

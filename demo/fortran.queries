@@ -1,0 +1,70 @@
+\!\$omp threadprivate
+\!\$omp declare reduction
+\!\$omp scan
+\!\$omp declare mapper
+\!\$omp allocate
+\!\$omp allocators
+\!\$omp \(begin \)\?metadirective
+\!\$omp declare variant
+\!\$omp dispatch
+\!\$omp declare simd
+\!\$omp declare target
+\!\$omp requires
+\!\$omp assume\(s\)\?
+\!\$omp nothing
+\!\$omp error
+\!\$omp tile
+\!\$omp unroll
+\!\$omp parallel
+\!\$omp teams
+\!\$omp simd
+\!\$omp masked
+\!\$omp single
+\!\$omp workshare
+\!\$omp scope
+\!\$omp sections
+\!\$omp do
+\!\$omp distribute
+\!\$omp loop
+\!\$omp task
+\!\$omp taskloop
+\!\$omp taskyield
+\!\$omp target \(enter \)\?data
+\!\$omp target\( update\)\?
+\!\$omp interop
+\!\$omp critical
+\!\$omp barrier
+\!\$omp taskgroup
+\!\$omp taskwait
+\!\$omp flush
+\!\$omp depobj
+\!\$omp atomic
+\!\$omp ordered
+\!\$omp cancel
+\!\$omp cancellation point
+\!\$omp do simd
+\!\$omp distribute simd
+\!\$omp distribute parallel do
+\!\$omp distribute parallel do simd
+\!\$omp taskloop simd
+\!\$omp parallel do
+\!\$omp parallel loop
+\!\$omp parallel sections
+\!\$omp parallel workshare
+\!\$omp parallel do simd
+\!\$omp parallel masked
+\!\$omp masked taskloop
+\!\$omp masked taskloop simd
+\!\$omp parallel masked taskloop\( simd\)\?
+\!\$omp teams distribute\( simd\)\?
+\!\$omp teams distribute parallel do\( simd\)\?
+\!\$omp teams loop
+\!\$omp target parallel
+\!\$omp target parallel do
+\!\$omp target parallel do simd
+\!\$omp target parallel loop
+\!\$omp target simd
+\!\$omp target teams
+\!\$omp target teams distribute\( simd\)\?
+\!\$omp target teams loop
+\!\$omp target teams distribute parallel do\( simd\)\?
