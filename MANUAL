@@ -1,10 +1,10 @@
 #################
 # Prerequisites #
 #################
-AGSearch requires a Python package called pygithub and the container engine podman.
-Pygithub can be installed via:
+AGSearch requires two Python packages called pygithub and pymongo and the container engine podman.
+Pygithub/pymongo can be installed via:
 
-python3 -m pip install pygithub
+python3 -m pip install pygithub pymongo
 
 Podman can either be installed with the package manager of your choice or directly from
 their website:
@@ -46,8 +46,6 @@ Stars requires an integer, pushed requires a date in the 'YYYY-MM-DD' format, i.
 Regarding the keywords, if you want to look for the union of two keywords, for example you want to find all repositories
 that use either HDF5 or NetCDF, or both, separate the keywords with OR instead of a comma (netcdf OR hdf5). If you
 separate the keywords with a comma, Github will only return repositories that use both NetCDF and HDF5.
-Regarding the keywords, if you use OpenMP as the keyword for example, Github will not return ALL repositories on
-Github that utilize OpenMP, but rather those that specify it in their name, readme or topics. (TODO check this actually).
 
 
 The code query file needs the following format:
