@@ -1,40 +1,40 @@
 #!/usr/bin/env python3
 # coding: utf-8
 
-from searchModule.api import API
-from searchModule.searchQueryFactory import SearchQueryFactory
-from searchModule.searchQueryConsumerFactory import SearchQueryConsumerFactory
-from analysisModule.codeQueryCollection import CodeQueryCollection
-from analysisModule.repository import Repository
-from analysisModule.analyzer import Analyzer
-from analysisModule.codeQueryReader import CodeQueryReader
-from initializerModule.mongoDB import MongoDB
-from initializerModule.dbControl import DBControl
-from initializerModule.parser import Parser
 import copy
 import os
 
+from analysisModule.analyzer import Analyzer
+from analysisModule.codeQueryCollection import CodeQueryCollection
+from analysisModule.codeQueryReader import CodeQueryReader
+from analysisModule.repository import Repository
+from initializerModule.dbControl import DBControl
+from initializerModule.mongoDB import MongoDB
+from initializerModule.parser import Parser
+from searchModule.api import API
+from searchModule.searchQueryConsumerFactory import SearchQueryConsumerFactory
+from searchModule.searchQueryFactory import SearchQueryFactory
 
 inputDict = Parser.parseInput()
 
 currentDir = os.getcwd()
-dataDir = os.path.join(currentDir, 'data')
+dataDir = os.path.join(currentDir, "data")
 
 if not os.path.isdir(dataDir):
     os.mkdir(dataDir)
-    
-DBControl.startContainer(dataDir)
 
-db = MongoDB(inputDict['dbcollection'])
+# DBControl.startContainer(dataDir)
 
-s = SearchQueryFactory.getSearchQuery(inputDict['api'], inputDict['searchqueries'])
-c = SearchQueryConsumerFactory.getConsumer(inputDict['api'], s, db)
+db = MongoDB(inputDict["dbcollection"])
+
+s = SearchQueryFactory.getSearchQuery(inputDict["api"], inputDict["searchconfig"])
+c = SearchQueryConsumerFactory.getConsumer(inputDict["api"], s, db)
 c.startSearch()
 c.reportRepos()
 
-queryCollection = CodeQueryReader.readCodeQueriesFromFile(inputDict['codequeries'])
+queryCollection = CodeQueryReader.readCodeQueriesFromFile(inputDict["codequeries"])
 
 repoAnalyzer = Analyzer(queryCollection, db)
-repoAnalyzer.beginAnalysis()  
+repoAnalyzer.beginAnalysis()
 
-DBControl.stopContainer()    
+# DBControl.stopContainer()

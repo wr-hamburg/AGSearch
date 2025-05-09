@@ -1,0 +1,5 @@
+nc_def_var_deflate(
+nc_def_var_blosc(
+nc_def_var_bzip2(
+nc_def_var_filter(
+nc_def_var_zstandard(

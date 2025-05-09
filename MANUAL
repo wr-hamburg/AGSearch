@@ -16,7 +16,7 @@ The tool was tested with Python 3.9.7, so no guarantees for any version below th
 #########
 # Usage #
 #########
-The tool requires two arguments: the path to the file containing the search query information (via --searchqueries)
+The tool requires two arguments: the path to the file containing the search query config (via --searchconfig)
 and the path to the file containing the queries that you want to look for in the repositories (via --codequeries).
 There are two optional arguments, the first one being the name for the database collection. The tool uses podman
 to set up a container for a MongoDB on port 27017, data will be stored in the 'data' directory in the directory

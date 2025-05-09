@@ -1,6 +1,7 @@
 from searchModule.api import API
 from searchModule.githubRestConsumer import GithubRestConsumer
 
+
 class SearchQueryConsumerFactory:
 
     @staticmethod
