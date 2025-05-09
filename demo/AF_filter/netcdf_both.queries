@@ -1,0 +1,10 @@
+nc_def_var_deflate(
+nc_def_var_blosc(
+nc_def_var_bzip2(
+nc_def_var_filter(
+nc_def_var_zstandard(
+nf90_def_var_deflate(
+nf90_def_var_blosc(
+nf90_def_var_bzip2(
+nf90_def_var_filter(
+nf90_def_var_zstandard(
