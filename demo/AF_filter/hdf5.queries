@@ -6,11 +6,9 @@ H5Z_FILTER_ZSTD(
 H5Z_FILTER_ZFP(
 H5Z_FILTER_BLOSC(
 H5Z_FILTER_SZ(
-nf90_def_var_deflate(
 h5pset_deflate_f(
 h5pset_szip_f(
 h5pset_shuffle_f(
-nc_def_var_deflate(
 H5Pset_deflate(
 H5Pset_szip(
 H5Pset_shuffle(
