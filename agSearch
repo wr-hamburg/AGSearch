@@ -29,7 +29,17 @@ db = MongoDB(inputDict["dbcollection"])
 
 s = SearchQueryFactory.getSearchQuery(inputDict["api"], inputDict["searchconfig"])
 c = SearchQueryConsumerFactory.getConsumer(inputDict["api"], s, db)
-c.startSearch()
+
+# check if list of repositories is already given or still needs to be determined
+if inputDict["repolist"]:
+    # read repositories directly from file
+    with open(inputDict["repolist"], "r") as fh:
+        repo_urls = fh.readlines()
+        repo_urls = [x.strip() for x in repo_urls]
+        c.get_repos(repo_urls)
+else:
+    c.startSearch()
+
 c.reportRepos()
 
 queryCollection = CodeQueryReader.readCodeQueriesFromFile(inputDict["codequeries"])

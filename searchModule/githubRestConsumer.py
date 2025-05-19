@@ -1,6 +1,7 @@
 import os
 import re
 import time
+import urllib
 from datetime import datetime, timedelta, timezone
 
 import tqdm
@@ -109,3 +110,28 @@ class GithubRestConsumer(SearchQueryConsumer):
         for name in self._repoNameList:
             metadata = self._githubMetadataDict[name]
             self._dbCollection.initializeRepo(name, metadata)
+
+    def get_repos(self, repo_urls):
+        for repo_url in tqdm.tqdm(repo_urls):
+            # only keep name of repo, remove beginning https://github.com/
+            repo_url_parsed = urllib.parse.urlparse(repo_url)
+            if (
+                repo_url_parsed.hostname != "www.github.com"
+                and repo_url_parsed.hostname != "github.com"
+            ):
+                print(f"Cannot search through {repo_url=}. Skip this entry")
+                continue
+            # remove trailing "/"
+            repo_url_name = repo_url_parsed.path
+            if repo_url_name.startswith("/"):
+                repo_url_name = repo_url_name[1:]
+            repo = self._githubObject.get_repo(repo_url_name)
+
+            self._repoNameList.append(repo.full_name)
+            cloneUrl = repo.clone_url
+            starCount = repo.stargazers_count
+            pushDate = repo.pushed_at
+            githubMetadata = GithubMetadata(
+                stars=starCount, cloneUrl=cloneUrl, pushDate=pushDate
+            )
+            self._githubMetadataDict[repo.full_name] = githubMetadata

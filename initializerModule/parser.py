@@ -1,4 +1,5 @@
 import argparse
+from pathlib import Path
 
 from searchModule.api import API
 
@@ -22,6 +23,12 @@ class Parser:
             help="Path to the file containing the code query information",
         )
         parser.add_argument(
+            "--repolist",
+            required=False,
+            type=Path,
+            help="List of URLs of repositories, which shall be searched exclusively",
+        )
+        parser.add_argument(
             "--dbcollection",
             nargs="?",
             default="veryGoodName",
@@ -42,6 +49,7 @@ class Parser:
         results.update({"searchconfig": args.searchconfig})
         results.update({"codequeries": args.codequeries})
         results.update({"dbcollection": args.dbcollection})
+        results.update({"repolist": args.repolist})
         if args.api == "rest":
             results.update({"api": API.GithubRest})
         elif args.api == "graphql":
