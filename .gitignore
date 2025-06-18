@@ -130,3 +130,6 @@ dmypy.json
 set_token.sh
 data
 data_backup
+data_levante 
+data_levante_keyword
+demo/Visualisation/results_backup
